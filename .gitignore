@@ -1,0 +1,5 @@
+# Don't commit plugin directories or generated files
+tmux/plugins/
+nvim/lazy-lock.json
+*.log
+*.swp
