@@ -26,6 +26,14 @@ setopt appendhistory
 setopt sharehistory
 setopt hist_ignore_all_dups
 
+# Fix key-bindings
+bindkey "^[[H"    beginning-of-line      # Home
+bindkey "^[[F"    end-of-line            # End
+bindkey "^[[3~"   delete-char            # Delete
+bindkey "^H"      backward-kill-word     # Ctrl+Backspace
+bindkey "^[[1;5D" backward-word          # Ctrl+Left
+bindkey "^[[1;5C" forward-word           # Ctrl+Right
+
 # Case-insensitive tab completion
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 
