@@ -1,0 +1,111 @@
+configuration {
+    show-icons: true;
+}
+
+
+* {
+    bg:                  #120B10;
+    bg-alt:              #1a0a2e;
+    fg:                  #FF0055;
+    fg-alt:              #FF3377;
+    accent:              #00FFC8;
+
+    font:                "Fira Code 11";
+    
+    background-color:    transparent;
+    text-color:          @fg;
+    
+    margin:              0;
+    padding:             0;
+    spacing:             0;
+}
+
+window {
+    background-color:    @bg;
+    border:              2px;
+    border-color:        @fg;
+    border-radius:       12px;
+    width:               600px;
+    location:            center;
+}
+
+mainbox {
+    padding:             12px;
+}
+
+inputbar {
+    background-color:    @bg-alt;
+    border:              1px;
+    border-color:        @fg;
+    border-radius:       8px;
+    padding:             8px 12px;
+    spacing:             8px;
+    children:            [prompt, entry];
+}
+
+prompt {
+    text-color:          @accent;
+}
+
+entry {
+    placeholder:         "Search...";
+    placeholder-color:   @fg-alt;
+}
+
+message {
+    margin:              12px 0 0;
+    border-radius:       8px;
+    border-color:        @fg;
+    background-color:    @bg-alt;
+}
+
+textbox {
+    padding:             8px 12px;
+}
+
+listview {
+    background-color:    transparent;
+    margin:              12px 0 0;
+    lines:               8;
+    columns:             2;
+    fixed-height:        false;
+}
+
+element {
+    padding:             8px 12px;
+    spacing:             8px;
+    border-radius:       8px;
+}
+
+element normal normal {
+    text-color:          @fg;
+}
+
+element normal urgent {
+    text-color:          #ff0000;
+}
+
+element normal active {
+    text-color:          @accent;
+}
+
+element selected normal,
+element selected active {
+    background-color:    @bg-alt;
+    text-color:          @accent;
+    border:              1px;
+    border-color:        @fg;
+}
+
+element selected urgent {
+    background-color:    #ff0000;
+}
+
+element-icon {
+    size:                1em;
+    vertical-align:      0.5;
+}
+
+element-text {
+    text-color:          inherit;
+}

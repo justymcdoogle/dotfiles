@@ -1,0 +1,55 @@
+* {
+    bg:                  #120B10;
+    bg-alt:              #1a0a2e;
+    fg:                  #FF0055;
+    accent:              #00FFC8;
+    
+    font:                "Fira Code 20";  /* Bigger for emoji */
+    
+    background-color:    transparent;
+    text-color:          @fg;
+}
+
+window {
+    background-color:    @bg;
+    border:              1px;
+    border-color:        @fg;
+    border-radius:       12px;
+    width:               300px;
+    height:              250px;
+}
+
+mainbox {
+    padding:             10px;
+}
+
+inputbar {
+    background-color:    @bg-alt;
+    border:              1px;
+    border-color:        @fg;
+    border-radius:       8px;
+    padding:             4px 6px;
+    children:            [entry];
+}
+
+listview {
+    columns:             5;   /* Wide grid for emoji */
+    lines:               4;
+    spacing:             1px;
+    cycle:               true;
+    flow:                horizontal;
+}
+
+element {
+    border-radius:       8px;
+}
+
+element selected {
+    background-color:    @bg-alt;
+    border:              1px;
+    border-color:        @accent;
+}
+
+element-text {
+    width:               2em;
+}
