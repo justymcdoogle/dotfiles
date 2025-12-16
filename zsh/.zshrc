@@ -75,10 +75,9 @@ alias wallrandom='~/.config/hypr/wallpaperscript/random.sh'
 # ============================================================================
 # STARTUP
 # ============================================================================
-# Run fastfetch on first interactive shell
-if [[ -o interactive ]] && [[ -z "$FASTFETCH_RUN" ]]; then
-    export FASTFETCH_RUN=1
+if [[ -n "$SHOW_FASTFETCH" ]]; then
     fastfetch
+    unset SHOW_FASTFETCH
 fi
 
 # ============================================================================
@@ -86,6 +85,14 @@ fi
 # ============================================================================
 source /usr/share/fzf/key-bindings.zsh
 source /usr/share/fzf/completion.zsh
+
+# ============================================================================
+# Auto-start Hyprland on TTY1
+# ============================================================================
+
+if [ -z "$DISPLAY" ] && [ "$XDG_VTNR" = 1 ]; then
+    exec hyprland
+fi
 
 # ============================================================================
 # PLUGINS (must be at end)
