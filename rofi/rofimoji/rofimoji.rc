@@ -1,3 +1,4 @@
-skin-tone = neutral
 hidden-descriptions=True
-selector-args ="-theme ~/.config/rofi/emoji-menu.rasi" -show-icons
+max-recent=5
+selector-args = "-theme ~/.config/rofi/emoji-menu.rasi -show-icons"
+skin-tone = neutral

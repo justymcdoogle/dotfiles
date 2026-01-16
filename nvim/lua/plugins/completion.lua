@@ -12,6 +12,16 @@ return {
     local cmp = require("cmp")
 
     cmp.setup({
+      window = {
+        completion = cmp.config.window.bordered({
+          border = 'single',
+          winhighlight = 'Normal:Normal,FloatBorder:FloatBorder,CursorLine:Visual,Search:None',
+        }),
+        documentation = cmp.config.window.bordered({
+          border = 'single',
+          winhighlight = 'Normal:Normal,FloatBorder:FloatBorder',
+        }),
+      },
       mapping = cmp.mapping.preset.insert({
 	['<C-Space>'] = cmp.mapping.complete(),
 	['<CR>'] = cmp.mapping.confirm({ select = true }),

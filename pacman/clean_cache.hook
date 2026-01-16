@@ -1,0 +1,12 @@
+[Trigger]
+Operation = Upgrade
+Operation = Install
+Operation = Remove
+Type = Package
+Target = *
+
+[Action]
+Description = Doing some spring cleaning... (keeping 2 versions)
+When = PostTransaction
+Exec = /usr/bin/paccache -rk2
+

@@ -15,12 +15,12 @@ window {
     border:              1px;
     border-color:        @fg;
     border-radius:       12px;
-    width:               300px;
-    height:              250px;
+    width:               600px;
+    height:              500px;
 }
 
 mainbox {
-    padding:             10px;
+    padding:             12px;
 }
 
 inputbar {
@@ -28,20 +28,30 @@ inputbar {
     border:              1px;
     border-color:        @fg;
     border-radius:       8px;
-    padding:             4px 6px;
+    padding:             3px 3px;
     children:            [entry];
 }
 
 listview {
-    columns:             5;   /* Wide grid for emoji */
-    lines:               4;
-    spacing:             1px;
+    scrollbar: true;
+    columns:             9;    
+    lines:               6;
+    spacing:             0px ; 
     cycle:               true;
     flow:                horizontal;
+    fixed-columns:       false;
+}
+
+scrollbar {
+    handle-color: @fg;
+    background-color: @bg-alt;
 }
 
 element {
+    padding:             0px;
+    margin:              0px 7px;
     border-radius:       8px;
+    children:            [element-text];
 }
 
 element selected {
@@ -51,5 +61,8 @@ element selected {
 }
 
 element-text {
-    width:               2em;
+    expand:              false;
+    horizontal-align:    0.5;
+    margin:              0px;
+    padding:             0px;
 }

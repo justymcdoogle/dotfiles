@@ -40,11 +40,13 @@ zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 # ============================================================================
 # PROMPT
 # ============================================================================
+
 eval "$(starship init zsh)"
 
 # ============================================================================
 # ALIASES
 # ============================================================================
+
 # Load external aliases
 source ~/.bash_aliases
 
@@ -75,6 +77,7 @@ alias wallrandom='~/.config/hypr/wallpaperscript/random.sh'
 # ============================================================================
 # STARTUP
 # ============================================================================
+
 if [[ -n "$SHOW_FASTFETCH" ]]; then
     fastfetch
     unset SHOW_FASTFETCH
@@ -83,6 +86,7 @@ fi
 # ============================================================================
 # FZF (fuzzy finder)
 # ============================================================================
+
 source /usr/share/fzf/key-bindings.zsh
 source /usr/share/fzf/completion.zsh
 
@@ -93,6 +97,24 @@ source /usr/share/fzf/completion.zsh
 if [ -z "$DISPLAY" ] && [ "$XDG_VTNR" = 1 ]; then
     exec hyprland
 fi
+
+# ===========================================================================
+# Language paths
+# ===========================================================================
+
+# Mason
+export PATH="$PATH:$HOME/.local/share/nvim/mason/bin"
+
+# Java
+export JAVA_HOME="/usr/lib/jvm/java-17-openjdk"
+export PATH="$PATH:$JAVA_HOME/bin"
+
+# Andoroid Studio
+export ANDROID_HOME=$HOME/Android/Sdk
+export PATH=$PATH:$ANDROID_HOME/emulator
+export PATH=$PATH:$ANDROID_HOME/platform-tools
+export PATH=$PATH:$ANDROID_HOME/tools
+export PATH=$PATH:$ANDROID_HOME/tools/bin
 
 # ============================================================================
 # PLUGINS (must be at end)
