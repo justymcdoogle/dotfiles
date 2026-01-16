@@ -47,9 +47,6 @@ eval "$(starship init zsh)"
 # ALIASES
 # ============================================================================
 
-# Load external aliases
-source ~/.bash_aliases
-
 # Basic commands with colors
 alias ls='eza'
 alias ll='eza -la'
