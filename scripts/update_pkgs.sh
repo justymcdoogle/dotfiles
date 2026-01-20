@@ -1,5 +1,5 @@
 #!/bin/bash
-OUTPUT="$HOME/dotfiles/pkglist.txt"
+OUTPUT="$HOME/pkglist.txt"
 
 # Get list of AUR packages
 AUR_PKGS=$(pacman -Qqem)
