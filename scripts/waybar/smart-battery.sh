@@ -1,23 +1,39 @@
 #!/bin/bash
 
 while true; do
-    capacity=$(cat /sys/class/power_supply/BAT1/capacity)
+    percentage=$(cat /sys/class/power_supply/BAT1/capacity)
+    state=$(cat /sys/class/power_supply/BAT1/status)
 
-    if [ "$capacity" -le 10 ]; then
-        # Critical: precise, fast updates
-        precise=$(awk "BEGIN {printf \"%.2f\", $(cat /sys/class/power_supply/BAT1/energy_now) / $(cat /sys/class/power_supply/BAT1/energy_full) * 100}")
-        icon=""
-        echo "{\"text\":\"$precise% $icon\",\"tooltip\":\"Critical battery\",\"class\":\"critical\"}"
-        sleep 5
-    elif [ "$capacity" -le 30 ]; then
-        # Warning: normal precision, moderate updates
-        icon=""
-        echo "{\"text\":\"$capacity% $icon\",\"tooltip\":\"Warning\",\"class\":\"warning\"}"
-        sleep 30
+    filled=$((percentage / 10))
+    empty=$((10 - filled))
+
+    bar_filled=$(seq 1 $filled | xargs printf '▰%.0s')
+    bar_empty=$(seq 1 $empty | xargs printf '▱%.0s')
+
+    bar="$bar_filled$bar_empty"
+
+    if [ $state = 'Charging' ]; then
+        charging_icon='⚡'
     else
-        # Normal: slow updates
-        [ "$capacity" -ge 80 ] && icon="" || icon=""
-        echo "{\"text\":\"$capacity% $icon\",\"tooltip\":\"Normal\",\"class\":\"normal\"}"
-        sleep 60
+        charging_icon=''
     fi
+
+    if [ $percentage -ge 95 ]; then
+        class='full'
+    elif [ $percentage -ge 20 ]; then
+        class='normal'
+    elif [ $percentage -ge 11 ]; then
+        class='warning'
+    else
+        class='critical'
+    fi
+
+    echo "{\"text\":\"$bar $percentage%$charging_icon\",\"class\":\"$class\"}"
+
+    case "$class" in
+        'full'|'normal') sleep 60 ;;
+        'warning') sleep 30 ;;
+        'critical') sleep 5 ;;
+    esac
+
 done
